@@ -1,1 +1,2 @@
 include ':CommonView'
+include ':sample'
