@@ -23,7 +23,8 @@ import java.util.List;
 
 public abstract class CommonMainActivity extends AppCompatActivity
         implements AdapterView.OnItemClickListener {
-    private ItemAdapter mItemAdapter;
+    // 2021/5/10 use common adapter
+    private MainItemAdapter mItemAdapter;
 
     private static void sortData(List<ResolveInfo> resolveInfos) {
         boolean skipSort = true;
@@ -53,7 +54,7 @@ public abstract class CommonMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common_main);
-        mItemAdapter = new ItemAdapter(this);
+        mItemAdapter = new MainItemAdapter(this);
         final ListView listView = findViewById(android.R.id.list);
         final View emptyView = findViewById(android.R.id.empty);
         listView.setEmptyView(emptyView);
@@ -87,9 +88,13 @@ public abstract class CommonMainActivity extends AppCompatActivity
         }
         final PackageManager packageManager = getPackageManager();
         final List<ResolveInfo> resolveInfos = packageManager.queryIntentActivities(intent, 0);
-        mItemAdapter.setResolveInfos(resolveInfos);
+        mItemAdapter.setDataList(resolveInfos);
     }
 
+    /**
+     * @deprecated {@link MainItemAdapter}
+     */
+    @Deprecated
     private static class ItemAdapter extends BaseAdapter {
         private PackageManager mPackageManager;
         private List<ResolveInfo> mResolveInfos;
@@ -145,6 +150,10 @@ public abstract class CommonMainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * @deprecated {@link MainItemAdapter.MainHolder}
+     */
+    @Deprecated
     private static class ViewHolder {
         private final TextView mTextView;
 
