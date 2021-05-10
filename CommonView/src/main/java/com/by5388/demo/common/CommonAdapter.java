@@ -63,7 +63,7 @@ public abstract class CommonAdapter<E, H extends CommonAdapter.CommonHolder<E>>
 
 
     public abstract static class CommonHolder<E> {
-        abstract void bind(E e);
+        public abstract void bind(E e);
     }
 
 }

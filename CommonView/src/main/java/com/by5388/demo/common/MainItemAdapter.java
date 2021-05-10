@@ -32,7 +32,7 @@ public class MainItemAdapter extends CommonAdapter<ResolveInfo, MainItemAdapter.
         }
 
         @Override
-        void bind(ResolveInfo resolveInfo) {
+        public void bind(ResolveInfo resolveInfo) {
             if (resolveInfo == null) {
                 return;
             }
